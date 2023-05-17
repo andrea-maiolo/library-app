@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/github.io/library-app/static/css/main.896820d1.css",
+    "main.js": "/github.io/library-app/static/js/main.ae1d7820.js",
+    "index.html": "/github.io/library-app/index.html",
+    "main.896820d1.css.map": "/github.io/library-app/static/css/main.896820d1.css.map",
+    "main.ae1d7820.js.map": "/github.io/library-app/static/js/main.ae1d7820.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.896820d1.css",
+    "static/js/main.ae1d7820.js"
+  ]
+}
