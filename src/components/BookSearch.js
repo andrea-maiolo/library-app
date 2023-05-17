@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { db } from "./Firebase";
 import { GoSearch } from "react-icons/go";
-
-//if there is an error in the search everyhting collapses
+import { BsBookmarkPlusFill } from "react-icons/bs";
 
 function BookSearch(props) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,14 +26,6 @@ function BookSearch(props) {
     setBooksFromSearch(data.items);
   };
 
-  // const handleKeyDown = function (event) {
-  //   event.preventDefault();
-  //   if (event.keyCode === 13) {
-  //     searchBooks();
-  //   }
-  // };
-
-  //check if the book that you clicked on is already in the library
   const isBookInDatabase = async (book) => {
     const dbRef = db.ref("books");
 
@@ -52,12 +43,19 @@ function BookSearch(props) {
     setIndexRef(index);
   };
 
-  //add a book to the library
   const addToLibrary = async (bookInfo, index) => {
+    const authorcheck = !bookInfo.volumeInfo.authors
+      ? "Unknown"
+      : bookInfo.volumeInfo.authors.join("");
+
+    const imgCheck = !bookInfo.volumeInfo.imageLinks
+      ? "https://cdn2.iconfinder.com/data/icons/symbol-blue-set-3/100/Untitled-1-94-512.png"
+      : bookInfo.volumeInfo.imageLinks?.thumbnail;
+
     const refinedBookInfo = {
       title: bookInfo.volumeInfo.title,
-      author: bookInfo.volumeInfo.authors.join(""),
-      imageUrl: bookInfo.volumeInfo.imageLinks?.thumbnail,
+      author: authorcheck,
+      imageUrl: imgCheck,
       id: bookInfo.id,
       bookStatus: false,
     };
@@ -73,47 +71,70 @@ function BookSearch(props) {
   };
 
   if (errorSearch) {
-    return <div className="errorInSearch">{errorSearch}</div>;
+    return (
+      <div className="errorInSearch">
+        {errorSearch}
+        <form id="searchForm">
+          <input
+            id="inputSearch"
+            placeholder="Which book are you looking for?"
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button id="searchButton" onClick={searchBooks}>
+            <GoSearch id="iconButton" />
+          </button>
+        </form>
+      </div>
+    );
   }
 
   const searchResults = booksFromSearch.map((book, index) => {
     return (
       <div key={index} className="booksInResults">
-        <div>
-          <h3>{book.volumeInfo.title}</h3>
-          <p>
-            Author:{" "}
-            {book.volumeInfo.authors
-              ? book.volumeInfo.authors.join("")
-              : "Unknown"}
-          </p>
-          <img src={book.volumeInfo.imageLinks?.thumbnail} />
-        </div>
-        <button onClick={() => addToLibrary(book, index)}>
-          Add to library
+        <button className="addButton" onClick={() => addToLibrary(book, index)}>
+          add book
+          <BsBookmarkPlusFill className="addIcon" />
         </button>
         {errorBook && indexRef === index ? (
-          <p>book already in library</p>
+          <p className="errorMessage">Book already in library</p>
         ) : null}
+        <h3 className="titleResult">{book.volumeInfo.title}</h3>
+        <p className="authorResult">
+          Author:{" "}
+          {book.volumeInfo.authors
+            ? book.volumeInfo.authors.join("")
+            : "Unknown"}
+        </p>
+        <img
+          className="imgResult"
+          src={
+            !book.volumeInfo.imageLinks
+              ? "https://cdn2.iconfinder.com/data/icons/symbol-blue-set-3/100/Untitled-1-94-512.png"
+              : book.volumeInfo.imageLinks?.thumbnail
+          }
+        />
       </div>
     );
   });
 
   return (
-    <div className="containerFormAndResults">
-      <form id="searchForm">
-        <input
-          id="inputSearch"
-          placeholder="Which book are you looking for?"
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          // onKeyDown={handleKeyDown}
-        />
-        <button id="searchButton" onClick={searchBooks}>
-          <GoSearch id="iconButton" />
-        </button>
-      </form>
+    <div>
+      <div className="header">
+        <form id="searchForm">
+          <input
+            id="inputSearch"
+            placeholder="Which book are you looking for?"
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button id="searchButton" onClick={searchBooks}>
+            <GoSearch id="iconButton" />
+          </button>
+        </form>
+      </div>
       <div className="searchResults">{searchResults}</div>
     </div>
   );

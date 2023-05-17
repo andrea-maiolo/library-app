@@ -1,0 +1,553 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.main {
+  background-color: #4285f4;
+}
+
+.googleLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #4285f4;
+}
+
+#loginButton {
+  font-size: 1.5rem;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 500;
+  height: 50px;
+  justify-content: center;
+  letter-spacing: 0.25px;
+  max-width: 100%;
+  padding: 2px 24px;
+  width: auto;
+}
+
+#loginButton:hover {
+  background: #f6f9fe;
+  color: rgb(47, 47, 120);
+  border: 2px solid #174ea6;
+}
+
+.errorSignIn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #4285f4;
+  color: #fff;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.sign-out {
+  position: relative;
+  top: 2rem;
+  left: 90%;
+  z-index: 1;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 550;
+  height: 35px;
+  justify-content: center;
+  max-width: 100%;
+  padding: 2px 24px;
+  width: auto;
+}
+
+.sign-out:hover {
+  background: #f6f9fe;
+  color: rgb(47, 47, 120);
+  border: 2px solid #174ea6;
+}
+
+.signOutIcon {
+  display: none;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 4rem;
+  padding: 1rem 2rem;
+  background-color: #4285f4;
+  position: absolute;
+  top: 0;
+}
+
+#searchForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#inputSearch {
+  border-radius: 24px;
+  width: 25rem;
+  height: 2rem;
+  border: none;
+  padding: 0 0.7rem;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#inputSearch:hover {
+  border: 2px solid #174ea6;
+}
+
+#inputSearch:focus {
+  border: 2px solid #174ea6;
+  outline: none;
+  border-color: #174ea6;
+  -moz-border-color: 0 0 3px #174ea6;
+  -webkit-border-color: 0 0 3px #174ea6;
+}
+
+#searchButton {
+  border: none;
+  background: #4285f4;
+  margin-left: 0.4rem;
+}
+
+#iconButton {
+  width: auto;
+  height: 1.2rem;
+}
+
+.searchResults {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  position: relative;
+  top: 4rem;
+  padding: 1rem 2rem;
+  background-color: #f6f9fe;
+}
+
+.errorInSearch {
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.booksInResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #174ea6;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  border-radius: 24px;
+  padding: 1rem;
+}
+
+.addButton {
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  font-weight: 600;
+  font-size: 0.8rem;
+  display: flex;
+  width: 70%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titleResult {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.authorResult {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.imgResult {
+  max-width: 35%;
+}
+
+.errorMessage {
+  font-weight: 600;
+  color: red;
+}
+
+.myLibrary {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  background-color: #f6f9fe;
+}
+
+#myBooks {
+  border-top: 2px dotted #174ea6;
+  border-bottom: 2px dotted #174ea6;
+}
+
+.booksInMyLibrary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.singleBookInLibrary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 2px solid #174ea6;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  border-radius: 24px;
+  height: 25rem;
+}
+
+.bookTitleLibrary {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.bookAuthorLibrary {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.bookImgLibrary {
+  max-width: 44%;
+}
+
+.statusButton {
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  font-weight: 600;
+  font-size: 0.8rem;
+  width: 7rem;
+  height: 1.5rem;
+}
+
+.deleteButton {
+  background-color: #f45442;
+  color: #fff;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  width: 3rem;
+  height: 2rem;
+}
+
+.statusContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.statusIcon {
+  width: 2rem;
+  height: 2rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .sign-out {
+    position: relative;
+    top: 2rem;
+    left: 87%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .sign-out {
+    position: relative;
+    top: 2rem;
+    left: 85%;
+  }
+}
+/* tablets */
+@media screen and (max-width: 768px) {
+  .errorSignIn {
+    font-size: 1.5rem;
+  }
+
+  .sign-out {
+    position: relative;
+    top: 2rem;
+    left: 82%;
+  }
+
+  .searchResults {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    position: relative;
+    top: 4rem;
+    padding: 1rem 2rem;
+    background-color: #f6f9fe;
+  }
+
+  .imgResult {
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 760px) {
+  .sign-out {
+    position: relative;
+    top: 2rem;
+    width: 1rem;
+    left: 85%;
+  }
+}
+
+@media (min-width: 570px) and (max-width: 600px) {
+  .main {
+    background-color: #fff;
+  }
+
+  .sign-out {
+    display: none;
+  }
+
+  .signOutIcon {
+    display: block;
+    position: relative;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .header {
+    display: block;
+    height: auto;
+    width: -webkit-fill-available;
+    padding: 1rem 2rem;
+    background-color: #4285f4;
+  }
+
+  #searchForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .searchResults {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    position: relative;
+    top: 4rem;
+    padding: 1rem 2rem;
+    background-color: #f6f9fe;
+  }
+
+  .booksInMyLibrary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* phones */
+
+@media (min-width: 425px) and (max-width: 569px) {
+  .sign-out {
+    display: none;
+  }
+
+  .signOutIcon {
+    display: block;
+    position: relative;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .header {
+    display: block;
+    height: auto;
+    width: -webkit-fill-available;
+    padding: 1rem 2rem;
+    background-color: #4285f4;
+  }
+
+  #searchForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 2rem;
+  }
+
+  #inputSearch {
+    width: 15rem;
+  }
+
+  .searchResults {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    position: relative;
+    top: 4rem;
+    padding: 1rem 2rem;
+    background-color: #f6f9fe;
+  }
+
+  .booksInMyLibrary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 424px) {
+  .sign-out {
+    display: none;
+  }
+
+  .signOutIcon {
+    display: block;
+    position: relative;
+    top: 0.8rem;
+    left: 0.8rem;
+    z-index: 1;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .header {
+    display: block;
+    height: auto;
+    width: -webkit-fill-available;
+    padding: 1rem 2rem;
+    background-color: #4285f4;
+  }
+
+  #searchForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 2rem;
+  }
+
+  #inputSearch {
+    width: 15rem;
+  }
+
+  .searchResults {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    position: relative;
+    top: 4rem;
+    padding: 1rem 2rem;
+    background-color: #f6f9fe;
+  }
+
+  .booksInMyLibrary {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 374px) {
+  .sign-out {
+    display: none;
+  }
+
+  .signOutIcon {
+    display: block;
+    position: relative;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 1;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .header {
+    display: block;
+    height: auto;
+    width: -webkit-fill-available;
+    padding: 1rem 2rem;
+    background-color: #4285f4;
+  }
+
+  #searchForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 2rem;
+  }
+
+  #inputSearch {
+    width: 15rem;
+  }
+
+  .searchResults {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    position: relative;
+    top: 4rem;
+    padding: 1rem 2rem;
+    background-color: #f6f9fe;
+  }
+
+  .booksInMyLibrary {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+}

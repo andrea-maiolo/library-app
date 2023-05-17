@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import firebase from "firebase/compat/app";
 import { db } from "./Firebase";
 import { RiDeleteBin6Fill } from "react-icons/ri";
+import { BsBookmarkCheckFill } from "react-icons/bs";
+import { BsBookmarkXFill } from "react-icons/bs";
 
 const MyLibrary = (props) => {
   const [myBooks, setMyBooks] = useState([]);
@@ -24,18 +26,12 @@ const MyLibrary = (props) => {
     };
   }, [props.dbControl]);
 
-  //how does it know to change when deleting a book?
-
   const changeStatus = function (book) {
     const idToChange = book.idOfDb;
     const bookRef = db.ref("books/" + idToChange + "/bookStatus");
     bookRef.transaction((currentValue) => {
       return !currentValue;
     });
-  };
-
-  const statusStyle = {
-    backgroundColor: "#CF2A47",
   };
 
   const deleteBook = function (book) {
@@ -54,16 +50,22 @@ const MyLibrary = (props) => {
 
   const booksInMyLibrary = myBooks.map((book, index) => {
     return (
-      <div
-        key={index}
-        className="singleBookInLibrary"
-        style={book.bookStatus ? statusStyle : null}
-      >
+      <div key={index} className="singleBookInLibrary">
+        <div className="statusContainer">
+          Status
+          {book.bookStatus ? (
+            <BsBookmarkCheckFill className="statusIcon" />
+          ) : (
+            <BsBookmarkXFill className="statusIcon" />
+          )}
+        </div>
         <h3 className="bookTitleLibrary">Title: {book.title}</h3>
-        <p>Author: {book.author}</p>
-        <img src={book.imageUrl} />
-        <button onClick={() => changeStatus(book)}>read/unread</button>
-        <button onClick={() => deleteBook(book)}>
+        <p className="bookAuthorLibrary">Author: {book.author}</p>
+        <img className="bookImgLibrary" src={book.imageUrl} />
+        <button className="statusButton" onClick={() => changeStatus(book)}>
+          read/unread
+        </button>
+        <button className="deleteButton" onClick={() => deleteBook(book)}>
           <RiDeleteBin6Fill className="deleteIcon" />
         </button>
       </div>
@@ -72,7 +74,7 @@ const MyLibrary = (props) => {
 
   return (
     <div className="myLibrary">
-      <h2>My Books</h2>
+      <h2 id="myBooks">My Books</h2>
       <div className="booksInMyLibrary">{booksInMyLibrary}</div>
     </div>
   );

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { auth } from "./components/Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "firebase/compat/app";
-import MyLibrary from "./components/MyLibrary";
+import { GoSignOut } from "react-icons/go";
 import BookSearch from "./components/BookSearch";
+import MyLibrary from "./components/MyLibrary";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -14,10 +15,8 @@ function App() {
       <body>
         {user ? (
           <div className="main">
-            <div className="header">
-              <SignOut />
-              <BookSearch dbControl={dbControl} setDbControl={setDbControl} />
-            </div>
+            <SignOut />
+            <BookSearch dbControl={dbControl} setDbControl={setDbControl} />
             <MyLibrary dbControl={dbControl} setDbControl={setDbControl} />
           </div>
         ) : (
@@ -60,9 +59,12 @@ const Login = () => {
 function SignOut() {
   return (
     auth.currentUser && (
-      <button className="sign-out" onClick={() => auth.signOut()}>
-        Sign Out
-      </button>
+      <div>
+        <button className="sign-out" onClick={() => auth.signOut()}>
+          Sign Out
+        </button>
+        <GoSignOut className="signOutIcon" onClick={() => auth.signOut()} />
+      </div>
     )
   );
 }
