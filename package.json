@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
   "homepage": "https://andrea-maiolo/github.io/library-app/",
   "name": "library-app",
-=======
-  "name": "library-app",
-  "homepage": "https://andrea-maiolo.github.io/library-app/",
->>>>>>> 8f4e789d3adf2342aaf8deb7cfab2f68b5354be2
   "version": "0.1.0",
   "private": true,
   "dependencies": {
