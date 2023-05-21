@@ -61,7 +61,7 @@ const MyLibrary = (props) => {
         </div>
         <h3 className="bookTitleLibrary">Title: {book.title}</h3>
         <p className="bookAuthorLibrary">Author: {book.author}</p>
-        <img className="bookImgLibrary" src={book.imageUrl} />
+        <img className="bookImgLibrary" alt="book cover" src={book.imageUrl} />
         <button className="statusButton" onClick={() => changeStatus(book)}>
           read/unread
         </button>

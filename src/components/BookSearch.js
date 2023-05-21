@@ -109,6 +109,7 @@ function BookSearch(props) {
         </p>
         <img
           className="imgResult"
+          alt="book cover"
           src={
             !book.volumeInfo.imageLinks
               ? "https://cdn2.iconfinder.com/data/icons/symbol-blue-set-3/100/Untitled-1-94-512.png"
