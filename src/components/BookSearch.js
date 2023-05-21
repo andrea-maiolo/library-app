@@ -9,6 +9,7 @@ function BookSearch(props) {
   const [errorBook, setErrorBook] = useState(false);
   const [indexRef, setIndexRef] = useState();
   const [errorSearch, setErrorSearch] = useState();
+  const userId = props.userId;
 
   //search for books form the googlebooks api
   const searchBooks = async (e) => {
@@ -58,6 +59,7 @@ function BookSearch(props) {
       imageUrl: imgCheck,
       id: bookInfo.id,
       bookStatus: false,
+      owner: userId,
     };
     const dbRef = db.ref().child("books");
     const newBookRef = dbRef.push();
@@ -67,7 +69,7 @@ function BookSearch(props) {
       return;
     }
     newBookRef.set(refinedBookInfo);
-    props.setDbControl(props.dbConrtol + 1);
+    props.setDbControl(props.dbControl + 1);
   };
 
   if (errorSearch) {

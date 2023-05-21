@@ -14,10 +14,12 @@ const MyLibrary = (props) => {
 
     dbRef.on("value", (snapshot) => {
       const booksData = snapshot.val();
+
       const booksList = Object.entries(booksData || {}).map(([key, value]) => ({
         idOfDb: key,
         ...value,
       }));
+      console.log(booksList, "boksdata");
       setMyBooks(booksList);
     });
 
@@ -25,6 +27,8 @@ const MyLibrary = (props) => {
       dbRef.off("value");
     };
   }, [props.dbControl]);
+
+  console.log(myBooks, "mybook");
 
   const changeStatus = function (book) {
     const idToChange = book.idOfDb;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "./components/Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "firebase/compat/app";
@@ -10,14 +10,31 @@ function App() {
   const [user] = useAuthState(auth);
   const [dbControl, setDbControl] = useState(0);
 
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+    setUserId(user.uid);
+  }, [user]);
+
   return (
     <div className="App">
       <body>
         {user ? (
           <div className="main">
             <SignOut />
-            <BookSearch dbControl={dbControl} setDbControl={setDbControl} />
-            <MyLibrary dbControl={dbControl} setDbControl={setDbControl} />
+            <BookSearch
+              dbControl={dbControl}
+              setDbControl={setDbControl}
+              userId={userId}
+            />
+            <MyLibrary
+              dbControl={dbControl}
+              setDbControl={setDbControl}
+              userId={userId}
+            />
           </div>
         ) : (
           <Login />
