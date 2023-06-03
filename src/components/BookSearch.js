@@ -14,6 +14,7 @@ function BookSearch(props) {
   //search for books form the googlebooks api
   const searchBooks = async (e) => {
     e.preventDefault();
+    setErrorBook(false);
     const response = await fetch(
       `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`
     );
