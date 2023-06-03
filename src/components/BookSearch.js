@@ -21,7 +21,6 @@ function BookSearch(props) {
     );
     const data = await response.json();
     // const data = false; work on the design
-    console.log(data.items);
     if (!data.items) {
       setErrorSearch("There was an error with your search, please try again");
       return;
