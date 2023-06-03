@@ -154,7 +154,7 @@ code {
   position: relative;
   top: 4rem;
   padding: 1rem 2rem;
-  background-color: #f6f9fe;
+  background-color: #d5d5d5;
 }
 
 .errorInSearch {
@@ -214,7 +214,7 @@ code {
   flex-direction: column;
   margin-top: 2rem;
   padding: 1.5rem 2rem;
-  background-color: #f6f9fe;
+  background-color: #d5d5d5;
 }
 
 #myBooks {
@@ -323,7 +323,7 @@ code {
     position: relative;
     top: 4rem;
     padding: 1rem 2rem;
-    background-color: #f6f9fe;
+    background-color: #d5d5d5;
   }
 
   .imgResult {
