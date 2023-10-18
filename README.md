@@ -19,7 +19,6 @@ This site is live at https://andrea-maiolo.github.io/library-app/.
 - **Extensive Book Collection:** Access a vast library of books across genres, including fiction, non-fiction, academic, and more.
 - **User Profiles:** Users can create profiles, track their reading history, and manage their bookshelves.
 - **Search and Filters:** Search for books by title, author, genre, or keywords.
-- **Bookmarking:** 
 
 ## Technologies Used
 
